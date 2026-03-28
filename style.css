@@ -1,7 +1,15 @@
 @keyframes pisca {
-    0% { opacity: 0.2;}
-    50% { opacity: 1;}
-    100% { opacity: 0.2;}
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
 }
 
 body {
@@ -112,9 +120,9 @@ body {
 
 }
 
-.pisca{
+.pisca {
     animation-name: pisca;
-    animation-duration:  1s;
+    animation-duration: 1s;
     animation-iteration-count: infinite;
 }
 
@@ -125,6 +133,25 @@ body {
 
 .d-1-right {
     width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.d-image {
+    border: 1px solid #000;
+    background-color: #FFF;
+    text-align: center;
+    font-size: 14px;
+}
+
+.d-image img {
+    width: 100%;
+}
+
+.d-image small{
+    width: 80%;
+    font-size: 12px;
 }
 
 .d-2 {
