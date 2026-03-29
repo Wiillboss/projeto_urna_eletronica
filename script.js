@@ -6,16 +6,23 @@ let aviso = document.querySelector('.d-2');
 let lateral = document.querySelector('.d-1-right');
 let numeros = document.querySelector('.d-1-3');
 
+
+
 //variaveis de ambiente
 let etapaAtual = 0;
 let numero = '';
+let votoBranco = false;
+
+
 
 //está função: limpa a tela; pegar as informações da etapa atual; vai preencher o que precisa ser preenchido
 function comecarEtapa() {
     let etapa = etapas[etapaAtual];
     let numeroHtml = '';
+    numero = '';
+    votoBranco = false;
 
-    for (let i = 0; i < etapa.numero; i++) {
+    for (let i = 0; i < etapa.numeros; i++) {
         if (i === 0) {
             numeroHtml += '<div class="numero pisca"></div>';
         } else {
@@ -28,7 +35,7 @@ function comecarEtapa() {
     descricao.innerHTML = '';
     aviso.style.display = 'none';
     lateral.innerHTML = '';
-    numeros.innerHTML = numeroHtml;
+    numero.innerHTML = numeroHtml;
 
 }
 
@@ -78,14 +85,40 @@ function clicou(n) {
 
     }
 }
-function branco(n) {
-    alert('Clicou em BRANCO');
+function branco() {
+    numero = '';
+    votoBranco = true;
+    seuVotoPara.style.display = 'block';
+    aviso.style.display = 'block';
+    numeros.innerHTML = '';
+    descricao.innerHTML = '<div class="aviso--grande pisca">VOTO EM BRANCO</div>';
+    lateral.innerHTML = '';
 }
-function corrige(n) {
-    alert('Clicou em CORRIGE');
+function corrige() {
+    comecarEtapa();
 }
-function confirma(n) {
-    alert('Clicou em CONFIRMA');
+function confirma() {
+    let etapa = etapas[etapaAtual];
+    let votoConfirmado = false;
+
+
+    if (votoBranco === true) {
+        votoConfirmado = true;
+        console.log("CONFIRMANDO VOTO EM BRANCO...");
+    } else if (numero.length === etapa.numero) {
+        votoConfirmado = true;
+        console.log('Confirmando como ' + numero);
+    }
+
+    if (votoConfirmado) {
+        etapaAtual++;
+        if (etapas[etapaAtual] !== undefined) {
+            comecarEtapa();
+        } else {
+            console.log("FIM!");
+        }
+
+    }
 }
 
 comecarEtapa()
