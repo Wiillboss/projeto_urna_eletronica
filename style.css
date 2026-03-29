@@ -149,7 +149,7 @@ body {
     width: 100%;
 }
 
-.d-image small{
+.d-image small {
     width: 80%;
     font-size: 12px;
 }
@@ -159,4 +159,9 @@ body {
     font-size: 14px;
     border-top: 2px solid #000;
     padding-left: 10px;
+}
+
+.aviso--grande {
+    font-size: 40px;
+    font-weight: bold;
 }
