@@ -22,7 +22,7 @@ function comecarEtapa() {
     numero = '';
     votoBranco = false;
 
-    for (let i = 0; i < etapa.numeros; i++) {
+    for (let i = 0; i < etapa.numero; i++) {
         if (i === 0) {
             numeroHtml += '<div class="numero pisca"></div>';
         } else {
@@ -35,7 +35,7 @@ function comecarEtapa() {
     descricao.innerHTML = '';
     aviso.style.display = 'none';
     lateral.innerHTML = '';
-    numero.innerHTML = numeroHtml;
+    numeros.innerHTML = numeroHtml;
 
 }
 
@@ -59,7 +59,12 @@ function atualizaInterFace() {
 
         let fotosHtml = '';
         for (let i in candidato.fotos) {
-            fotosHtml += `<div class="d-1-image"><img src = "images/${candidato.fotos[i].url}" alt = "" />${candidato.fotos[i].legenda}</div>`;
+            if (candidato.fotos[i].small) {
+                fotosHtml += `<div class="d-1-image small"><img src = "images/${candidato.fotos[i].url}" alt = "" />${candidato.fotos[i].legenda}</div>`;
+
+            } else {
+                fotosHtml += `<div class="d-1-image"><img src = "images/${candidato.fotos[i].url}" alt = "" />${candidato.fotos[i].legenda}</div>`;
+            }
         }
         lateral.innerHTML = fotosHtml;
     } else {
@@ -105,7 +110,7 @@ function confirma() {
     if (votoBranco === true) {
         votoConfirmado = true;
         console.log("CONFIRMANDO VOTO EM BRANCO...");
-    } else if (numero.length === etapa.numero) {
+    } else if (numero.length >= etapa.numero) {
         votoConfirmado = true;
         console.log('Confirmando como ' + numero);
     }

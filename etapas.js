@@ -39,7 +39,7 @@ let etapas = [
                 numero: '84',
                 nome: 'Zulano',
                 partido: 'QWERTY',
-                fotos: [
+                   fotos: [
                     { url: '84.jpg', legenda: 'Prefeito' },
                     { url: '84_2.jpg', legenda: 'Vice-Prefeito', small: true }
                 ]
